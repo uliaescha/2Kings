@@ -1,0 +1,33 @@
+@import '../../styles/base.scss';
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-items: flex-end;
+    justify-content: space-between;
+    font-size: 24px;
+    margin: 0 30px;
+
+    &-logo {
+        width: 130px;
+        height: auto;
+    }
+    &-btns{
+        display: flex;
+        gap: 64px;
+    }
+
+    &-links {
+        display: flex;
+        gap: 64px;
+        li {
+            font-family: $headers-font;
+            list-style: none;
+        }
+    }
+    &-button {
+        font-family: $headers-font;
+        margin-right: 24px;
+        font-size: 24px;
+    }
+}
