@@ -1,0 +1,21 @@
+@use '../../styles/fonts.scss' as fonts;
+@import '../../styles/base.scss';
+
+@font-face {
+    font-family: 'Lacquer';
+    src: url('../../assets/fonts/Lacquer-Regular.ttf') format('truetype');
+}
+
+.main-font {
+    font-family: $main-page-font, serif;
+    font-size: 90px;
+    text-align: center;
+    margin: 80px 0 15px 0;
+}
+
+.photo-main-page {
+    width: 690px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
