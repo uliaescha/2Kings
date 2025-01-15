@@ -1,11 +1,12 @@
-@import 'variables';
+@import './variables.scss';
+
 @font-face {
-    font-family: $main-page-font;
-    src: url('../assets/fonts/CrimsonText-Regular.ttf') format('ttf');
+    font-family: 'CrimsonText-Regular';
+    src: url('../assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: $headers-font;
-    src: url('../assets/fonts/Lacquer-Regular.ttf') format('ttf');
+    font-family: 'Lacquer';
+    src: url('../assets/fonts/Lacquer-Regular.ttf') format('truetype');
 }
 
