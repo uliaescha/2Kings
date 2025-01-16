@@ -6,21 +6,33 @@
     src: url('../../../assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
-
 @mixin text {
-    font-family: "Kantumruy Pro", serif;
+    font-family: $main-font-text;
     font-weight: 400;
     text-align: center;
 }
 
+@mixin annotation-pos($brkpnt-1, $brkpnt-2) {
+    position: absolute;
+    top: $brkpnt-1;
+    left: $brkpnt-2;
+}
+
+@mixin annotation-line($brkpnt-1, $brkpnt-2, $deg) {
+    position: absolute;
+    left: $brkpnt-1;
+    top: $brkpnt-2;
+    transform: rotate($deg);
+}
+
 #about-us {
-    margin-top: 20%;
+    margin-top: 15%;
     .texts{
         display: flex;
         flex-direction: column;
         gap: 51px;
         h1 {
-            font-family: $headers-font, serif;
+            font-family: $headers-font;
             text-transform: uppercase;
             font-size: 60px;
             text-align: center;
@@ -36,6 +48,61 @@
             font-size: 42px;
             margin-top: 24px;
         }
+    }
+    .image-container {
+        position: relative;
+        img {
+            width: 377px;
+            height: 697px;
+            display: block;
+            margin: 37px auto;
+            position: relative;
+        }
+      
+        .annotation {
+            position: relative;
+            span {
+                color: $font-color-light;
+                font-family: $main-font-text;
+                font-weight: 200;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 24px;
+            }
+
+            .line {
+                margin: 10px;
+                width: 70px;
+                border-top: 2px solid $font-color-light;
+                color: $font-color-light;
+            }
+               
+        }
+        .annotation-top-left {
+            @include annotation-pos(100px, 260px);
+            .line {
+                @include annotation-line(360px, 24px, 30deg);
+            }
+        }
+        .annotation-top-right {
+            @include annotation-pos(170px, 920px);
+            .line {
+                @include annotation-line(-75px, 24px, -30deg);
+            }
+        }
+        .annotation-bottom-left {
+            @include annotation-pos(450px, 290px);
+            .line {
+                @include annotation-line(270px, 24px, 30deg);
+            }
+        }
+        .annotation-bottom-right {
+            @include annotation-pos(540px, 990px);
+            .line {
+                @include annotation-line(-75px, 24px, -30deg);
+            }
+        }
+
     }
  
 }
