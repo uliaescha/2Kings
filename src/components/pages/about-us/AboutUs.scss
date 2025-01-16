@@ -104,5 +104,15 @@
         }
 
     }
+   .cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .arrow {
+        display: block;
+        width: 45px;
+        height: auto;
+    }
  
 }

@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+@mixin text {
+    background-color: #eee;
+    color: black;
+    font-family: $main-font-text;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.card {
+        display: flex;
+        width: 350px;
+        height: 480px;
+        margin: 50px;
+        padding: 24px 16px 16px 16px; 
+        flex-direction: column;
+        background-color: #eee;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        border-radius: 12px;
+
+        hr {
+            margin-top: 20px;
+            color: black;
+            width: 30%;
+            height: 2px;
+        }
+        h3 {
+            @include text;
+        }
+        img {
+            background-color: #eee;
+            min-width: 115px;
+            max-width: 150px;
+            object-fit: contain;
+            margin-top: 12px;
+        }
+        p {
+            display: block;;
+            @include text;
+            text-align: end;
+            align-self: flex-end;
+            margin-top: auto;
+        }
+}

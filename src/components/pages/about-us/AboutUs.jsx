@@ -1,6 +1,9 @@
 import './AboutUs.scss';
 import Card from '../../../components/card-about-us-page/CardAboutUsPage'
 import photo from '../../../assets/img/queen.png';
+import arrow from '../../../assets/img/arrow.png';
+import { cardsData } from "../../card-about-us-page/cardsData.jsx";
+
 function AboutUs() {
     const queen = photo;
     return (
@@ -38,9 +41,15 @@ function AboutUs() {
           </div>
         </div>
         <div className="cards">
-          <Card />
-          <Card />
-          <Card />
+          {cardsData.map((card, index) => (
+            <Card
+              key={index}
+              mainText={card.mainText}
+              descText={card.descText}
+              sourcePhoto={card.sourcePhoto}
+            />
+          ))}
+          <img src={arrow} className='arrow'alt="" />
         </div>
       </section>
     );
