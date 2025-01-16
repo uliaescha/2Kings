@@ -1,5 +1,5 @@
-import Header from "../common/Header";
-import Photo from "../../assets/img/photo-main-page.png";
+import Header from "../../header/Header";
+import Photo from "../../../assets/img/photo-main-page.png"
 import './MainPage.scss';
 
 const photo = Photo;

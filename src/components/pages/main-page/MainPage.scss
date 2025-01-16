@@ -1,9 +1,9 @@
-@use '../../styles/fonts.scss' as fonts;
-@import '../../styles/base.scss';
+@use '../../../styles/fonts.scss' as fonts;
+@import '../../../styles/base.scss';
 
 @font-face {
     font-family: 'Lacquer';
-    src: url('../../assets/fonts/Lacquer-Regular.ttf') format('truetype');
+    src: url('../../../assets/fonts/Lacquer-Regular.ttf') format('truetype');
 }
 
 .main-font {
