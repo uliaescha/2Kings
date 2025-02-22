@@ -2,13 +2,14 @@
 @import '../../styles/variables.scss';
 
 .navigation {
+    background: black;
     display: flex;
     align-items: center;
     justify-items: flex-end;
     justify-content: space-between;
     font-size: 24px;
     margin: 0 30px;
-
+  
     &-logo {
         width: 130px;
         height: auto;
@@ -30,5 +31,6 @@
         font-family: $headers-font, serif;
         margin-right: 24px;
         font-size: 24px;
+        background: black;
     }
 }

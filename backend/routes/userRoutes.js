@@ -38,7 +38,7 @@ const router = express.Router();
  *         description: Помилка сервера
  */
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body; // 🔥 Додаємо name
+  const { name, email, password } = req.body; 
 
   try {
     const existingUser = await User.findOne({ email });
@@ -48,7 +48,7 @@ router.post("/register", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({ name, email, password: hashedPassword }); // 🔥 Додаємо name
+    const newUser = new User({ name, email, password: hashedPassword }); 
     await newUser.save();
 
     res.status(201).json({ message: "User is registed successfully" });

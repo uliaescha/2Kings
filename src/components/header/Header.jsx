@@ -1,5 +1,6 @@
-import logo from '../../assets/img/logo.png';
-import './Header.scss';
+import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo.png";
+import "./Header.scss";
 
 const logotype = logo;
 function Header() {
@@ -13,7 +14,9 @@ function Header() {
             <li>Coaches</li>
             <li>Books</li>
           </ul>
-          <button className="navigation-button">log in</button>
+          <Link to="/register">
+            <button className="navigation-button">log in</button>
+          </Link>
         </div>
       </nav>
     </header>
