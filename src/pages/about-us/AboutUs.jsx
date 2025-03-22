@@ -1,8 +1,8 @@
 import './AboutUs.scss';
-import Card from '../../../components/card-about-us-page/CardAboutUsPage'
-import photo from '../../../assets/img/queen.png';
-import arrow from '../../../assets/img/arrow.png';
-import { cardsData } from "../../card-about-us-page/cardsData.jsx";
+import Card from '../../components/card-about-us-page/CardAboutUsPage'
+import photo from '../../assets/img/queen.png';
+import arrow from '../../assets/img/arrow.png';
+import { cardsData } from "../../components/card-about-us-page/cardsData.jsx";
 
 function AboutUs() {
     const queen = photo;

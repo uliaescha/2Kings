@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./components/pages/main-page/MainPage";
-import Registration from "./components/pages/auth/Registration";
+import MainPage from "./pages/main-page/MainPage";
+import Registration from "./pages/auth/Registration";
 
 function App() {
   return (

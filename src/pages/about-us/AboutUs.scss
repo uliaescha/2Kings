@@ -1,9 +1,9 @@
-@import '../../../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300&family=Lacquer&display=swap');
 @font-face {
     font-family: 'CrimsonText-Regular';
-    src: url('../../../assets/fonts/CrimsonText-Regular.ttf') format('truetype');
+    src: url('../../assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
 @mixin text {
