@@ -78,4 +78,59 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  const { name, password } = req.body;
+
+  try {
+    const user = await User.findOne({ name });
+    if (!user) {
+      return res.status(400).json({ message: "User does not exist" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    if (user.token) {
+      try {
+        jwt.verify(user.token, process.env.JWT_SECRET);
+        console.log("Returning existing valid token");
+
+        res.cookie("authToken", user.token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 90 * 24 * 60 * 60 * 1000,
+          sameSite: "Lax",
+        });
+
+        return res.status(200).json({
+          message: "User logged in successfully",
+          token: user.token,
+        });
+      } catch (err) {
+        console.log("Token expired or invalid, generating a new one");
+      }
+    }
+
+    const token = generateToken(user._id);
+    user.token = token;
+    await user.save();
+
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 90 * 24 * 60 * 60 * 1000,
+      sameSite: "Lax",
+    });
+
+    res.status(200).json({
+      message: "User logged in successfully",
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
 export default router;
