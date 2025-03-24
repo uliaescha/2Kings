@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Kaushan+Script&display=swap');
+
+.profile-page {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    
+    .profile-content {
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .profile-info {
+            text-align: center;
+            margin-top:calc(5%);
+            
+            .user-name {
+                font-size: 3rem;
+                margin: 5px 0;
+            }
+
+            .user-email {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        .bttns {
+            display: flex;
+            flex-direction: column;
+
+            .history-btn {
+                font-size: 1.7rem;
+                background-color: #dcdcdc;
+                color: #000;
+                padding: 10px 20px;
+                margin: 10px 0;
+                border-radius: 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .action-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin: 10px 0;
+            }
+
+            .logout-btn,
+            .delete-btn {
+                font-size: 1.5rem;
+                background-color: #dcdcdc;
+                color: #000;
+                padding: 8px 16px;
+                border-radius: 20px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+    .profile-footer {
+        margin-top: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .chess-title {
+                font-family: 'Crimson Text', serif;
+                font-size: 200px;
+                letter-spacing: 50%;
+                margin-bottom: -140px;
+                opacity: 0.5;
+            }
+        
+        .chess-subtitle {
+            font-family: 'Kaushan Script', cursive;
+            font-size: 150px;
+            opacity: 0.5;
+        }
+    }
+}
+
