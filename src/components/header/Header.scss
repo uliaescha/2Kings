@@ -27,6 +27,10 @@
             list-style: none;
         }
     }
+    &-icon-prf {
+        width: 70px;
+        height: auto;
+    }
     &-button {
         font-family: $headers-font, serif;
         margin-right: 24px;

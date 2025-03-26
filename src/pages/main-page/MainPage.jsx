@@ -1,7 +1,7 @@
 import Header from "../../components/header/Header";
 import Photo from "../../assets/img/photo-main-page.png"
 import './MainPage.scss';
-import AboutUs from "../about-us/AboutUs";
+import AboutUs from "../../components/about-us/AboutUs";
 
 const photo = Photo;
 function MainPage() {
