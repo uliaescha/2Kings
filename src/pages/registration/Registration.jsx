@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import "./Registration.scss";
 
@@ -10,7 +11,7 @@ function Registration() {
   });
 
   const [message, setMessage] = useState("");
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,6 +22,7 @@ function Registration() {
     try {
       const response = await api.post("/users/register", formData);
       setMessage("Registration is successful");
+      navigate("/profile");
       console.log("Server response:", response.data);
     } catch (error) {
       setMessage(

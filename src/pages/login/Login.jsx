@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import "../registration/Registration.scss";
 
@@ -10,7 +11,7 @@ function Login() {
     });
 
     const [message, setMessage] = useState("");
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -22,6 +23,8 @@ function Login() {
         const response = await api.post("/users/login", formData);
         setMessage("login is successful");
         console.log("Server response:", response.data);
+
+        navigate("/profile");
       } catch (error) {
         setMessage(
           "Login failed: " +
