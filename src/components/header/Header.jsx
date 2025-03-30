@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
-import isAuthenticated from "../../utils/auth";
+import { useAuth } from "../../context/AuthContext"
 import "./Header.scss";
 import photo from '../../assets/img/icon-prf.png';
-const icon = photo;
-const logotype = logo;
-function Header() {
 
+function Header() {
+  const { isAuthenticated } = useAuth(); 
+  const icon = photo;
+  const logotype = logo;
   return (
     <header className="header">
       <nav className="navigation">
@@ -20,7 +21,7 @@ function Header() {
             <li>Coaches</li>
             <li>Books</li>
           </ul>
-          {isAuthenticated() ? (
+          {isAuthenticated ? (
             <Link to="/profile">
               <img
                 src={icon}

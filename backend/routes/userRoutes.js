@@ -61,7 +61,7 @@ router.post("/register", async (req, res) => {
     await newUser.save();
 
     res.cookie("authToken", token, {
-       httpOnly: true,
+       httpOnly: false,
        secure: process.env.NODE_ENV === "production",
        maxAge: 90 * 24 * 60 * 60 * 1000,
        sameSite: "Lax",
@@ -98,7 +98,7 @@ router.post("/login", async (req, res) => {
         console.log("Returning existing valid token");
 
         res.cookie("authToken", user.token, {
-          httpOnly: true,
+          httpOnly: false,
           secure: process.env.NODE_ENV === "production",
           maxAge: 90 * 24 * 60 * 60 * 1000,
           sameSite: "Lax",
@@ -118,7 +118,7 @@ router.post("/login", async (req, res) => {
     await user.save();
 
     res.cookie("authToken", token, {
-      httpOnly: true,
+      httpOnly: false,
       secure: process.env.NODE_ENV === "production",
       maxAge: 90 * 24 * 60 * 60 * 1000,
       sameSite: "Lax",

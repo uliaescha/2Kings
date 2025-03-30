@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate} from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import api from "../../api/api";
 import "./Registration.scss";
 
@@ -12,6 +13,8 @@ function Registration() {
 
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const { isAuthenticated, login } = useAuth(); 
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,8 +25,9 @@ function Registration() {
     try {
       const response = await api.post("/users/register", formData);
       setMessage("Registration is successful");
-      navigate("/profile");
       console.log("Server response:", response.data);
+      login();
+      navigate("/profile");
     } catch (error) {
       setMessage(
         "Registration failed: " +
@@ -34,47 +38,55 @@ function Registration() {
   };
 
   return (
-    <div className="reg-page">
-      <div className="form-container">
-        <h2 className="title">REGISTRATION</h2>
-        {message && <p className="message">{message}</p>}
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-          />
+    <>
+      {isAuthenticated ? (
+        <>
+          <Navigate to="/profile" />
+        </>
+      ) : (
+        <div className="reg-page">
+          <div className="form-container">
+            <h2 className="title">REGISTRATION</h2>
+            {message && <p className="message">{message}</p>}
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
 
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
 
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            value={formData.password}
-            onChange={handleChange}
-          />
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+              />
 
-          <button type="submit" className="submit-btn">
-            SING UP
-          </button>
-        </form>
-      </div>
-    </div>
+              <button type="submit" className="submit-btn">
+                SING UP
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

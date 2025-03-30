@@ -1,69 +1,77 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import api from "../../api/api";
+import { useAuth } from "../../context/AuthContext";
 import "../registration/Registration.scss";
 
-
 function Login() {
-    const [formData, setFormData] = useState({
-      name: "",
-      password: "",
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    password: "",
+  });
 
-    const [message, setMessage] = useState("");
-    const navigate = useNavigate();
-    const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const { isAuthenticated, login } = useAuth(); 
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-      try {
-        const response = await api.post("/users/login", formData);
-        setMessage("login is successful");
-        console.log("Server response:", response.data);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        navigate("/profile");
-      } catch (error) {
-        setMessage(
-          "Login failed: " +
-            (error.response?.data?.message || error.message)
-        );
-        console.error("Error:", error);
-      }
-    };
+    try {
+      const response = await api.post("/users/login", formData);
+      setMessage("login is successful");
+      console.log("Server response:", response.data);
+
+      login();
+      navigate("/profile");
+    } catch (error) {
+      setMessage(
+        "Login failed: " + (error.response?.data?.message || error.message)
+      );
+      console.error("Error:", error);
+    }
+  };
   return (
-    <div className="reg-page">
-      <div className="form-container">
-        <h2 className="title">Login</h2>
-        {message && <p className="message">{message}</p>}
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            value={formData.password}
-            onChange={handleChange}
-          />
+    <>
+      {isAuthenticated ? (
+        <Navigate to="/profile" />
+      ) : (
+        <div className="reg-page">
+          <div className="form-container">
+            <h2 className="title">Login</h2>
+            {message && <p className="message">{message}</p>}
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+              />
 
-          <button type="submit" className="submit-btn">
-            Log in
-          </button>
-        </form>
-      </div>
-    </div>
+              <button type="submit" className="submit-btn">
+                Log in
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
