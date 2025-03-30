@@ -5,10 +5,9 @@ import "./Profile.scss";
 import Header from "../../components/header/Header";
 
 function Profile() {
-  const { isAuthenticated, logout } = useAuth();
+  const {  logout } = useAuth();
   return (
     <>
-      {isAuthenticated ? (
         <div className="profile-page">
           <Header />
           <div className="profile-content">
@@ -31,9 +30,6 @@ function Profile() {
             </div>
           </div>
         </div>
-      ) : (
-        <Navigate to="/login" />
-      )}
     </>
   );
 }

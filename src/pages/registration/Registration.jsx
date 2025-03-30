@@ -13,7 +13,7 @@ function Registration() {
 
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { isAuthenticated, login } = useAuth(); 
+  const { login } = useAuth(); 
   
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,11 +39,6 @@ function Registration() {
 
   return (
     <>
-      {isAuthenticated ? (
-        <>
-          <Navigate to="/profile" />
-        </>
-      ) : (
         <div className="reg-page">
           <div className="form-container">
             <h2 className="title">REGISTRATION</h2>
@@ -85,7 +80,6 @@ function Registration() {
             </form>
           </div>
         </div>
-      )}
     </>
   );
 }
